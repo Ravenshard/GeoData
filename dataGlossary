@@ -1,0 +1,18 @@
+id_point
+- unique ID on refuges info
+nom
+- name of the refuge
+type
+- type of refuge; always refuge gardé
+altitude
+- altitude of refuge
+latitude
+- latitude of refuge (North-South)
+longitude
+- longitude of refuge (East-West)
+état
+- State (normally null)
+nombre de place
+- Number of people the place can sleep
+lien refuge
+- link on to the refuges website
