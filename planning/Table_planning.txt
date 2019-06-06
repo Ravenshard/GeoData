@@ -1,0 +1,49 @@
+Tables:
+
+Géographie
+- Longitude
+- Latitude
+- Altitude
+- UID
+
+Media
+- Social Networks (FB, IG, TW, SC, etc.)
+- Photos
+- Videos
+- UID
+
+Itineraire
+- D'accès
+- Randonnies
+- UID
+
+Gestion
+- Proprietaire
+- Couriell, Web, Telephone
+- Date ouverature
+- UID
+
+Batiment et Structure
+- date contruction
+- nb de place
+- sanitaire
+- cuisine
+- wifi
+- présence d'une salle hors-sac
+- informations visuel bati
+- prèsence d'un local hivernal
+- Possibilité d'un ravitaillement en eau
+- Refuges Proches
+- UID
+
+Environnment
+- Énergie
+- de chets
+- l'eau
+- UID
+
+Observations et Hesures
+- entrien
+- enregistre
+- station météo
+- UID
