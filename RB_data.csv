@@ -1,0 +1,28 @@
+UID FID	OBJECTID	Nom_du_ref	Nom_gardie	Proprieta	Secteur	Latitude	Longitude	Altitude_m	Hot_Spot	Participat	Int�r�t_	Visite	Entretien_	Enregistre	Diagnostic	Station	Com__MF	Observatio	Enqu�tes_	DIFFUSION	Evenements	Nbre_de_nu	Nbre_Visit	Livres_	Attentes_C	F25	F26	Type	Famille_	Amis	Couple	Seul
+1547  0	1	Alpe de villar d'Arene	Kaincz Sabine et Andre	FFCAM	Haute Romanche	44.996183	6.384563	"2,071.00"	OUI	OUI	3	OUI	OUI	OUI	OUI	NON	NON	OUI	OUI	Stricte	 	"3,831.00"	0	OUI	M�t�o/ socio	 	 	Moyenne montagne	43	26	21	7
+5572  1	2	Chamoissiere	Jacob Sylvie et Sebastien Louvet	Prive	Haute Romanche	44.995506	6.385397	"2,100.00"	OUI	OUI	3	OUI	OUI	OUI	OUI	NON	NON	OUI	OUI	Stricte	 	0	4	OUI	 	 	 	Moyenne montagne	43	26	21	7
+1710  2	3	Pave	Loos Sophie	FFCAM	Haute Romanche	44.985904	6.32858	"2,829.00"	OUI	OUI	3	OUI	OUI	OUI	OUI	OUI	NON	OUI	OUI	Libre	 	821	4	OUI	Lac et glacier	 	 	Haute montagne	20	40	20	8
+1537  3	4	Adele Planchard	Meignan Aurelien - Daganoemie	STD	Haute Romanche	44.968992	6.344864	"3,169.00"	OUI	OUI	3	OUI	OUI	OUI	OUI	NON	NON	OUI	OUI	Libre	 	6	2	OUI	Glacier	 	 	Haute montagne	20	40	20	8
+1488  4	5	Aigle	Gaillot Louis	FFCAM	Haute Romanche	45.011304	6.324587	"3,440.00"	OUI	NSPP	1	NON	NON	NON	NON	NC	NON	NON	NON	-	 	0	0	NON	 	 	 	Haute montagne	20	40	20	8
+1752  5	6	Promontoire	Meignan Fredi etathalie	FFCAM	Haut Veneon	44.99841	6.303536	"3,092.00"	OUI	OUI	3	OUI	OUI	OUI	OUI	NON	OUI	OUI	OUI	Stricte	 	11	3	OUI	 	 	 	Haute montagne	20	40	20	8
+1753  6	7	Chatelleret	Romero Charles et Sylvia	FFCAM	Haut Veneon	44.975819	6.299482	"2,225.00"	OUI	OUI	2	OUI	OUI	NON	OUI	NON	NON	OUI	OUI	A Disposition	 	4	4	OUI	 	 	 		0	0	0	0
+1754  7	8	La Pilatte	Dahuron Mathilde	FFCAM	Haut Veneon	44.870005	6.331894	"2,577.00"	NON	OUI	1	OUI	OUI	OUI	OUI	NON	OUI	OUI	NON	-	 	5	4	NON	 	 	 		0	0	0	0
+647 8	9	Temple Ecrins	Gardent Marie	FFCAM	Haut Veneon	44.904226	6.332568	"2,410.00"	NON	NSPP	1	OUI	OUI	OUI	OUI	NON	NON	OUI	NON	-	 	0	1	NON	 	 	 		0	0	0	0
+1529  9	11	Alpe du Pin	Magne Carine et Armadeil Judith	JDA	Haut Veneon	44.945	6.174	"1,805.00"	NON	OUI	1	OUI	OUI	NON	OUI	NON	NON	OUI	NON	-	 	2	3	NON	 	 	 		0	0	0	0
+1544  10	12	Le Soreiller	Turc Martine	STD	Haut Veneon	44.96068	6.243958	"2,719.00"	NON	NSPP	0	OUI	NON	-	NON	NC	NON	NON	NON	-	 	0	1	NON	 	 	 		0	0	0	0
+1545  11	13	La Selle	Marielle	STD	Haut Veneon	44.98256	6.248985	"2,673.00"	NON	OUI	2	OUI	NON	-	OUI	NON	NON	NON	NON	-	 	1	1	NON	 	 	 		0	0	0	0
+1536  12	14	Pelvoux	Haxaire Damien	FFCAM	Vallouise	44.882652	6.405662	"2,694.00"	NON	OUI	3	OUI	OUI	OUI	OUI	OUI	OUI	OUI	NON	-	 	4	2	OUI	 	 	 		0	0	0	0
+1538  13	15	Les Bans	Jullien Stephane	FFCAM	Vallouise	44.834424	6.361139	"2,106.00"	NON	OUI	3	OUI	OUI	OUI	OUI	NON	NON	OUI	NON	-	 	4	2	OUI	 	 	 		0	0	0	0
+1540  14	16	Le Sele	Gaentzhirt Raoul	FFCAM	Vallouise	44.87336	6.390517	"2,504.00"	NON	NSPP	1	NON	NON	-	NON	NC	NON	NON	NON	-	 	0	0	NON	 	 	 		0	0	0	0
+1550  15	17	Glacier Blanc	Chaudicolas	FFCAM	Vallouise	44.93755	6.41164	"2,542.00"	NON	OUI	1	OUI	NON	-	NON	NON	NON	OUI	NON	-	 	2	1	OUI	 	 	 		0	0	0	0
+1535	18	Les Ecrins	Fouchard Jean-Francois et Jocelyne	FFCAM	Vallouise	44.947334	6.383095	"3,161.00"	NON	OUI	1	OUI	OUI	OUI	OUI	OUI	OUI	NON	NON	-	 	0	1	OUI	 	 	 		0	0	0	0
+1000  17	19	Le Kern	Bel Vincent	Prive	Vallouise	44.781406	6.519834	"1,725.00"	NON	OUI	2	NON	OUI	OUI	OUI	NON	NON	NON	NON	-	 	0	0	NON	 	 	 		0	0	0	0
+6472  18	20	Font Turbat	Delorme Sandrine	FFCAM	Valgaudemar	44.864906	6.17775	"2,169.00"	NON	OUI	2	OUI	OUI	OUI	OUI	NON	NON	NON	NON	-	 	2	1	?	 	 	 		0	0	0	0
+1548  19	21	L'Olan	Martinot Melanie	FFCAM	Valgaudemar	44.841515	6.204423	"2,332.00"	NON	OUI	1	OUI	NON	-	NON	NC	NON	NON	NON	-	 	0	2	NON	 	 	 		0	0	0	0
+1166	22	Les Souffles	Armand Jean-Claude	FFCAM	Valgaudemar	44.844652	6.146549	"1,969.00"	NON	OUI	2	OUI	OUI	OUI	OUI	NON	NON	OUI	NON	-	 	3	2	?	 	 	 		0	0	0	0
+1767  21	23	Chabourneou	Luquet Dominique	FFCAM	Valgaudemar	44.809982	6.314972	"1,998.00"	NON	OUI	2	OUI	OUI	OUI	OUI	NON	NON	OUI	NON	-	 	3	2	OUI	 	 	 		0	0	0	0
+1165  22	24	Vallonpierre	Bailly Guillaume	FFCAM	Valgaudemar	44.798485	6.289191	"2,262.00"	NON	OUI	3	OUI	OUI	OUI	OUI	NON	NON	NON	NON	-	 	3	3	OUI	 	 	 		0	0	0	0
+1549  23	25	Pigeonnier	Parent Olivier	FFCAM	Valgaudemar	44.854884	6.284918	"2,423.00"	NON	NSPP	1	OUI	NON	-	OUI	NON	NON	NON	NON	-	 	1	1	NON	 	 	 		0	0	0	0
+1741  24	26	Evariste Chancel	Philippe Annie	Prive	Romanche	45.0267	6.2712	"2,508.00"	NON	OUI	1	OUI	OUI	OUI	OUI	NON	NON	NON	NON	-	 	0	1	NON	 	 	 		0	0	0	0
+1341  25	30	La Muzelle	Durdan Chantal	Communal	Veneon	44.953	6.097452	"2,115.00"	NON	NSPP	0	NON	NON	NON	NON	NC	NON	NON	NON	-	 	0	0	NON	?	 	 		0	0	0	0
+2000  26	0	 	 	 	 	0	0	0	 	 	0	 	 	 	 	 	 	 	 	 	 	0	0	 	 	 	 	Haute montagne	20	40	20	8
