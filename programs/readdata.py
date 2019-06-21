@@ -18,6 +18,7 @@ def executeArgs():
                 addData(newData)
 
         index += 1
+    return
 
 def getFileArg():
     '''
@@ -61,29 +62,33 @@ def addData(dataPack):
         cursorObj = dbObj.cursor()
         cursorObj.execute('SELECT name from sqlite_master where type= "table"')
         tables = cursorObj.fetchall()
-        for tup in tables:
-            if name in tup:
-                print("WARNING: table found, overwrite existing data?")
-                confirmation = input("y/n?\n>")
-                if not confirmation == 'y': return
-                cursorObj.execute("DROP TABLE IF EXISTS {}; ".format(name))
-        tableTypes = '{} char(150), ' * (len(headers)-1)
+        if tables != []:
+            for tup in tables:
+                if name in tup:
+                    print("WARNING: table found, overwrite existing data?")
+                    confirmation = input("y/n?\n>")
+                    if not confirmation == 'y': return
+                    cursorObj.execute("DROP TABLE IF EXISTS {}; ".format(name))
+        # tableTypes = '{} char(150), ' * (len(headers)-1)
+        # tableTypes = tableTypes[:-2].format(*headers)
+        tableTypes = '{} char(150), ' * (len(headers))
         tableTypes = tableTypes[:-2].format(*headers)
-        newTable = 'create table {} ( UID integer primary key, {});'.format(name,tableTypes)
+        # newTable = 'create table {} ( UID integer primary key, {});'.format(name,tableTypes)
+        newTable = 'create table {} ({});'.format(name, tableTypes)
         cursorObj.execute(newTable)
         values = '?,' * len(headers)
         statement = 'insert into {} values ({})'.format(name, values[:-1])
-        print(statement)
         cursorObj.executemany(statement, dataList)
-    except:
-        print(sys.exc_info()[0])
+    except Exception as inst:
+        # print(sys.exc_info()[0])
+        print(type(inst))
+        print(inst)
         input("> ")
     finally:
         dbObj.commit()
         cursorObj.close()
         dbObj.close()
     return
-
 
 def mainmenu():
     '''
@@ -97,6 +102,8 @@ def mainmenu():
             viewTables()
         elif choice == 'ss':
             selectStatement()
+        # elif choice == 'th':
+        #     tableHeaders()
     return
 
 def selectStatement():
@@ -119,7 +126,8 @@ def selectStatement():
             cursorObj.execute("select {} from {}".format(sel, frm))
         else:
             statement = 'SELECT ? FROM ? WHERE ?;'
-            cursorObj.execute(statement, [sel, frm, whr])
+            cursorObj.execute("select {} from {} where {}".format(sel, frm, whr))
+            # cursorObj.execute(statement, [sel, frm, whr])
         tables = cursorObj.fetchall()
         print("Results:\n{}".format(tables))
     finally:
