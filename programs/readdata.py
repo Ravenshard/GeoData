@@ -3,9 +3,25 @@
 '''
 
 import os, re, sys, time, unicodedata, math, csv, collections
-import sqlite3
+import psycopg2
 
 dbName = "ecrains.db"
+
+def getConnection():
+    '''
+    '''
+    connect_str = "dbname='ecrains' user='Jay' host='localhost' " + \
+                  "password='inriaTravail19'"
+    # use our connection values to establish a connection
+    conn = psycopg2.connect(connect_str)
+    # create a psycopg2 cursor that can execute queries
+    cursor = conn.cursor()
+    return (conn, cursor)
+
+def closeConnection(conn, cursor):
+    cursor.close()
+    conn.close()
+    return
 
 def executeArgs():
     ''' Execute all arguments from the command line before running the program
@@ -17,20 +33,20 @@ def executeArgs():
     '''
     index = 1
     while index < len(sys.argv):
-
-        if sys.argv[index] == '-ad':
+        if sys.argv[index] == '-test':
+            testStatement()
+        elif sys.argv[index] == '-ad':
             index += 1
             if os.path.exists(sys.argv[index]):
                 newData = lireFile(sys.argv[index])
                 addData(newData)
-
         index += 1
     return
 
 def lireFile(file):
     ''' Lire le file avec la donnée adjouter le base de donnée
     Parameters:
-        Aucun
+        file (str):     The path to where the data is stored
 
     Returns:
         Aucun
@@ -45,7 +61,7 @@ def lireFile(file):
         fileContent = csv.reader(fileContent, delimiter=deli)
         headers = next(fileContent)
         data = collections.namedtuple(name, headers)
-        for row in fileContent: dataList.append(data(*row))
+        for row in fileContent:  dataList.append(data(*row))
     return (dataList, name, headers)
 
 def addData(dataPack):
@@ -59,9 +75,8 @@ def addData(dataPack):
     global dbName
     dataList, name, headers = dataPack
     try:
-        dbObj = sqlite3.connect(dbName)
-        cursorObj = dbObj.cursor()
-        cursorObj.execute('SELECT name from sqlite_master where type= "table"')
+        dbObj, cursorObj = getConnection()
+        cursorObj.execute('SELECT tablename FROM pg_catalog.pg_tables;')
         tables = cursorObj.fetchall()
         # Handle overwriting tables
         if tables != []:
@@ -71,12 +86,13 @@ def addData(dataPack):
                     confirmation = input("y/n?\n>")
                     if not confirmation == 'y': return
                     cursorObj.execute("DROP TABLE IF EXISTS {}; ".format(name))
-        tableTypes = '{} char(150), ' * (len(headers))
+        tableTypes = '{} text, ' * (len(headers))
         tableTypes = tableTypes[:-2].format(*headers)
         newTable = 'create table {} ({});'.format(name, tableTypes)
         cursorObj.execute(newTable)
-        values = '?,' * len(headers)
+        values = '%s,' * len(headers)
         statement = 'insert into {} values ({})'.format(name, values[:-1])
+        print(statement)
         cursorObj.executemany(statement, dataList)
     except Exception as inst:
         print(type(inst))
@@ -84,8 +100,7 @@ def addData(dataPack):
         input("> ")
     finally:
         dbObj.commit()
-        cursorObj.close()
-        dbObj.close()
+        closeConnection(dbObj, cursorObj)
     return
 
 def mainmenu():
@@ -105,8 +120,28 @@ def mainmenu():
             viewTables()
         elif choice == 'ss':
             selectStatement()
-        # elif choice == 'th':
-        #     tableHeaders()
+        elif choice == 'th':
+            tableHeaders()
+    return
+
+def testStatement():
+    print("TEST:")
+    dbObj, cursorObj = getConnection()
+
+    sel = 'failure'
+    frm = 'reseau_social'
+    sql = "SELECT %s FROM reseau_social"
+    id = 1752
+    # cursorObj.execute(sql, (sel,))
+
+    cursorObj.execute("select website from reseau_social where uid = %s", ("1752",))
+    # cursorObj.execute("select uid from reseau_social")
+    # cursorObj.execute("select {} from {}".format(sel, frm))
+
+    tables = cursorObj.fetchall()
+    print("Results:\n{}".format(tables))
+    closeConnection(dbObj, cursorObj)
+    sys.exit()
     return
 
 def selectStatement():
@@ -125,13 +160,17 @@ def selectStatement():
     whr = input("input the WHERE part\n>")
 
     try:
-        dbObj = sqlite3.connect(dbName)
-        cursorObj = dbObj.cursor()
+        # dbObj = sqlite3.connect(dbName)
+        # cursorObj = dbObj.cursor()
+        dbObj, cursorObj = getConnection()
         if whr == '':
             # statement = 'SELECT ? FROM ? '
             # cursorObj.execute(statement, [sel, frm])
             # cursorObj.execute('select ? from refuge', (sel))
             cursorObj.execute("select {} from {}".format(sel, frm))
+            # statement = "select (%s) from {}".format(frm)
+            # print(statement)
+            # cursorObj.execute(statement, (sel,))
         else:
             # statement = 'SELECT ? FROM ? WHERE ?;'
             cursorObj.execute("select {} from {} where {}".format(sel, frm, whr))
@@ -143,8 +182,9 @@ def selectStatement():
         print(inst)
         input("> ")
     finally:
-        cursorObj.close()
-        dbObj.close()
+        closeConnection(dbObj, cursorObj)
+        # cursorObj.close()
+        # dbObj.close()
     return
 
 def viewTables():
@@ -157,14 +197,21 @@ def viewTables():
     '''
     global dbName
     try:
-        dbObj = sqlite3.connect(dbName)
-        cursorObj = dbObj.cursor()
-        cursorObj.execute('SELECT name from sqlite_master where type= "table"')
+        # dbObj = sqlite3.connect(dbName)
+        # cursorObj = dbObj.cursor()
+        dbObj, cursorObj = getConnection()
+        cursorObj.execute('SELECT tablename FROM pg_catalog.pg_tables;')
         tables = cursorObj.fetchall()
-        print("current tables:\n{}".format(tables))
+        returnList = list()
+        for tuple in tables:
+            for entry in tuple:
+                if not ("pg_" in entry or "sql_" in entry): returnList.append(entry)
+
+        print("current tables:\n{}".format(returnList))
     finally:
-        cursorObj.close()
-        dbObj.close()
+        closeConnection(dbObj, cursorObj)
+        # cursorObj.close()
+        # dbObj.close()
 
     return
 
