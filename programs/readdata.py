@@ -7,7 +7,13 @@ import psycopg2
 from PIL import Image
 
 def getConnection():
-    '''
+    ''' Connect to the database and return connection and cursor
+    Parameters:
+        None
+
+    Returns:
+        connection:     connection to the database
+        cursor:         cursor to be used with the database
     '''
     connect_str = "dbname='ecrains' user='Jay' host='localhost' " + \
                   "password='inriaTravail19'"
@@ -15,7 +21,31 @@ def getConnection():
     cursor = conn.cursor()
     return (conn, cursor)
 
+def getSecureConnection():
+    ''' Connect to the database and return connection and cursor
+    Parameters:
+        None
+
+    Returns:
+        connection:     connection to the database
+        cursor:         cursor to be used with the database
+    '''
+    pw = input("please enter password:\n> ")
+    connect_str = "dbname='ecrains' user='Jay' host='localhost' " + \
+                  "password='{}'".format(pw)
+    conn = psycopg2.connect(connect_str)
+    cursor = conn.cursor()
+    return (conn, cursor)
+
 def closeConnection(conn, cursor):
+    ''' Close the connection with the database
+    Parameters:
+        conn:       connection to be closed
+        cursor:     cursor to be closed
+
+    Returns:
+        None
+    '''
     cursor.close()
     conn.close()
     return
@@ -39,7 +69,7 @@ def executeArgs():
                 addData(newData)
         elif sys.argv[index] == '-del':
             index += 1
-            deleteData(sys.argv[index])
+            deleteTable(sys.argv[index])
         elif sys.argv[index] == '-apf':
             index +=1
             if os.path.exists(sys.argv[index]):  addPhotoFile(sys.argv[index])
@@ -49,7 +79,7 @@ def executeArgs():
 def lireFile(file):
     ''' Lire le file avec la donnée adjouter le base de donnée
     Parameters:
-        file (str):     The path to where the data is stored
+        file (str):     le chemin où les données sont stockées
 
     Returns:
         Aucun
@@ -68,9 +98,11 @@ def lireFile(file):
     return (dataList, name, headers)
 
 def addPhotoFile(file):
+    ''' TODO: Take apart and make smaller
+    '''
     try:
         allPhotos = os.listdir(file)
-        dbObj, cursorObj = getConnection()
+        dbObj, cursorObj = getSecureConnection()
 
         cursorObj.execute('SELECT tablename FROM pg_catalog.pg_tables;')
         tables = cursorObj.fetchall()
@@ -84,7 +116,6 @@ def addPhotoFile(file):
             cursorObj.execute(statement)
 
         for photo in allPhotos:
-            # 1165.P01.png
             (uid, picid, ext) = photo.split('.')
             binPhoto = open("{}.\\{}".format(file,photo), 'rb').read()
             statement = "INSERT INTO Photos(uid, picid, ext, photo) VALUES (%s, %s, %s, %s)"
@@ -109,17 +140,16 @@ def addData(dataPack):
     '''
     dataList, name, headers = dataPack
     try:
-        dbObj, cursorObj = getConnection()
+        dbObj, cursorObj = getSecureConnection()
         cursorObj.execute('SELECT tablename FROM pg_catalog.pg_tables;')
         tables = cursorObj.fetchall()
         # Handle overwriting tables
-        if tables != []:
-            for tup in tables:
-                if name in tup:
-                    print("WARNING: table found, overwrite existing data?")
-                    confirmation = input("y/n?\n>")
-                    if not confirmation == 'y': return
-                    cursorObj.execute("DROP TABLE IF EXISTS {}; ".format(name))
+        for tup in tables:
+            if name in tup:
+                print("WARNING: table found, overwrite existing data?")
+                confirmation = input("y/n?\n>")
+                if not confirmation == 'y': return
+                cursorObj.execute("DROP TABLE IF EXISTS {}; ".format(name))
         tableTypes = '{} text, ' * (len(headers))
         tableTypes = tableTypes[:-2].format(*headers)
         newTable = 'create table {} ({});'.format(name, tableTypes)
@@ -137,9 +167,16 @@ def addData(dataPack):
         print("Table added successfully")
     return
 
-def deleteData(tableName):
+def deleteTable(tableName):
+    ''' Delete a table from the database
+    Parameters:
+        tableName (str):    the name of the table we will delete
+
+    Returns:
+        None
+    '''
     try:
-        dbObj, cursorObj = getConnection()
+        dbObj, cursorObj = getSecureConnection()
         cursorObj.execute("drop table if exists {}".format(tableName))
     except Exception as inst:
         print(type(inst))
@@ -155,16 +192,20 @@ def testStatement():
     print("TEST:")
     dbObj, cursorObj = getConnection()
 
-    sel = 'website'
-    frm = 'reseau_social'
-    whr = 'uid'
     uid = '647'
-    picid = 'P02'
-    ext = 'png'
-
-    # cursorObj.execute("select {} from {} where {}=%s".format(sel, frm, whr), (id,))
-    statement = "SELECT * FROM photos WHERE uid ='647';"
-    cursorObj.execute(statement)
+    picid = 'P01'
+    if uid == '' and picid == '':
+        statement = "select * from photos"
+        cursorObj.execute(statement)
+    elif uid == '' and picid != '':
+        statement = "select * from photos where picid = %s"
+        cursorObj.execute(statement,(picid,))
+    elif uid != '' and picid == '':
+        statement = "select * from photos where uid=%s"
+        cursorObj.execute(statement, (uid,))
+    elif uid != '' and picid != '':
+        statement = "select * from photos where uid = %s and picid = %s"
+        cursorObj.execute(statement, (uid,picid))
     tables = cursorObj.fetchall()
     print("Results:\n{}".format(tables))
 
@@ -182,6 +223,13 @@ def testStatement():
     return
 
 def tableHeaders():
+    ''' Return the headers of a given table
+    Parameters:
+        None
+
+    Returns:
+        tables (list):  the list of tuples containing the headers
+    '''
     tables = list()
     try:
         dbtable = input("input the table you want to view the headers of\n>")
@@ -201,7 +249,7 @@ def selectStatement():
         None
 
     Returns:
-        None
+        tables (list):  the returned list of tuples containing the returned values
     '''
     print("There are 3 parts: SELECT, FROM, WHERE")
     sel = input("input the SELECT part\n>")
@@ -223,12 +271,38 @@ def selectStatement():
     return tables
 
 def selectPhotos():
+    ''' TODO: Break into smaller functions
+    '''
     try:
         dbObj, cursorObj = getConnection()
-    except Exception as exc:
-        print("oh no")
+        uid = input("Please enter the uid:\n>")
+        picid = input("Please enter the picture id:\n> ")
+        if uid == '' and picid == '':
+            statement = "select * from photos"
+            cursorObj.execute(statement)
+        elif uid == '' and picid != '':
+            statement = "select * from photos where picid = %s"
+            cursorObj.execute(statement,(picid,))
+        elif uid != '' and picid == '':
+            statement = "select * from photos where uid=%s"
+            cursorObj.execute(statement, (uid,))
+        elif uid != '' and picid != '':
+            statement = "select * from photos where uid = %s and picid = %s"
+            cursorObj.execute(statement, (uid,picid))
+        tables = cursorObj.fetchall()
+        pause = input("Would you like to pause after each picture? y/n\n> ")
+        for tup in tables:
+            fname = "{}.{}.{}".format(tup[0], tup[1], tup[2])
+            file = open(fname, 'wb').write(tup[3])
+            im = Image.open(fname).show()
+            os.remove(fname)
+            if pause == 'y': input(">")
+    except Exception as inst:
+        print(type(inst))
+        print(inst)
+        input("> ")
+    finally:  closeConnection(dbObj, cursorObj)
     return
-
 
 def viewTables():
     ''' View all the tables in the current database
@@ -236,7 +310,7 @@ def viewTables():
         None
 
     Returns:
-        None
+        returnList (list):  list of the returned tuples
     '''
     returnList = list()
     try:
@@ -271,12 +345,36 @@ def mainmenu():
         elif choice == 'th':
             res = tableHeaders()
             printResults(res)
+        elif choice == 'sp':
+            selectPhotos()
+        elif choice == 'sql':
+            sqlStatement()
     return
 
 def printResults(tup):
-    '''
+    ''' Print whatever is passed in the parameters
+    Parameters:
+        tup (list)      hopefully a list or tuple to print (or anything else)
+
+    Returns:
+        None
     '''
     print("Results:\n{}".format(tup))
+    return
+
+def sqlStatement():
+    try:
+        dbObj, cursorObj = getSecureConnection()
+        print("Enter your sql statement and hit enter when done")
+        statement = input("> ")
+        cursorObj.execute(statement)
+        tables = cursorObj.fetchall()
+        print("Results:\n{}".format(tables))
+    except Exception as inst:
+        print(type(inst))
+        print(inst)
+        input("> ")
+    finally:  closeConnection(dbObj, cursorObj)
     return
 
 def main():
