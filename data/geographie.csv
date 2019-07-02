@@ -1,35 +1,35 @@
 uid;type;longitude;latitude;altitude;massif;secteur;chaine;region;departement;commune
-2296;;6.32756;44.76534;1803.00;ecrins;;;Provence-Alpes-Cote d'Azur;Haute-Alpes;
-UID;Longitude;Latitude;Altitude;Secteur
-1547;6.384563;44.996183;2,071.00;Haute Romanche;;;;;;
-5572;6.385397;44.995506;2,100.00;Haute Romanche;;;;;;
-1710;6.32858;44.985904;2,829.00;Haute Romanche;;;;;;
-1537;6.344864;44.968992;3,169.00;Haute Romanche;;;;;;
-1488;6.324587;45.011304;3,440.00;Haute Romanche;;;;;;
-1752;6.303536;44.99841;3,092.00;Haut Veneon;;;;;;
-1753;6.299482;44.975819;2,225.00;Haut Veneon;;;;;;
-1754;6.331894;44.870005;2,577.00;Haut Veneon;;;;;;
-647;6.332568;44.904226;2,410.00;Haut Veneon;;;;;;
-1529;6.174;44.945;1,805.00;Haut Veneon;;;;;;
-1544;6.243958;44.96068;2,719.00;Haut Veneon;;;;;;
-1545;6.248985;44.98256;2,673.00;Haut Veneon;;;;;;
-1536;6.405662;44.882652;2,694.00;Vallouise;;;;;;
-1538;6.361139;44.834424;2,106.00;Vallouise;;;;;;
-1540;6.390517;44.87336;2,504.00;Vallouise;;;;;;
-1550;6.41164;44.93755;2,542.00;Vallouise;;;;;;
-1535;6.383095;44.947334;3,161.00;Vallouise;;;;;;
-1000;6.519834;44.781406;1,725.00;Vallouise;;;;;;
-6472;6.17775;44.864906;2,169.00;Valgaudemar;;;;;;
-1548;6.204423;44.841515;2,332.00;Valgaudemar;;;;;;
-1166;6.146549;44.844652;1,969.00;Valgaudemar;;;;;;
-1767;6.314972;44.809982;1,998.00;Valgaudemar;;;;;;
-1165;6.289191;44.798485;2,262.00;Valgaudemar;;;;;;
-1549;6.284918;44.854884;2,423.00;Valgaudemar;;;;;;
-1741;6.2712;45.0267;2,508.00;Romanche;;;;;;
-1341;6.097452;44.953;2,115.00;Veneon;;;;;;
-2319;6.18288;45.04361;1,517.00;;;;;;;;
-1546;;;;;;;;;;
-1552;;;;;;;;;;
-4223;;;;;;;;;;
-2166;;;;;;;;;;
-1276;;;;;;;;;;
+2319;;6.18288;45.04361;1517.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Mizoen
+1552;;6.27554;44.82925;1397.00;;;ecrins;Porvence-Alpes-Cote d'Azur;Hautes-Alpes;La Chapelle-en-Valgaudemar
+1276;;6.23615;44.84143;2250.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;La Chapelle-en-Valgaudemar
+2296;;6.32756;44.76534;1803.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;champoleon
+1001;;6.2223;44.71721;1712.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;champoleon
+1767;;6.31482;44.80995;1998.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;La Chapelle-en-Valgaudemar
+1548;;6.20453;44.841515;2332.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;La Chapelle-en-Valgaudemar
+1165;;6.2898;44.7986;2262.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;La Chapelle-en-Valgaudemar
+1549;;6.28497;44.85489;2423.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;La Hcapelle-en-Valgaudemar
+1488;;6.32455;45.01129;3440.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;La Grave
+1741;;6.27117;45.02687;2508.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;La Grave
+1535;;6.38284;44.9473;3161.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;Pelvoux
+1550;;6.41172;44.9473;2,542.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;Pelvoux
+1536;;6.4057;44.8825;2694.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;Pelvoux
+1540;;6.39053;44.87332;2504.00;;;ecrins;Porvence-Alpes-Cote d'Azur;Hautes-Alpes;Pelvoux
+1529;;6.17329;44.94464;1805.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+1546;;6.20616;44.89862;1799.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+1754;;6.3321;44.87;2577.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+1545;;6.24913;44.98228;2673.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+1752;;6.30492;44.99843;3092.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+1544;;6.2437;44.9604;2719.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+647;;6.3325;44.9042;2410.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+6472;;6.17766;44.86495;2169.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Valjouffrey
+1538;;6.3612;44.83442;2106.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;Vallouise
+1341;;6.09762;44.953;2115.00;;;ecrins;Augvergne-Rhone-alpes;Isere;Venosc
+5572;;6.3855;44.9955;2100.00;;;ecrins;Provence-Alpes-Cote d'Azur;Villar-d'Arene
+1537;;6.34515;44.96892;3169.00;;;ecrins;Provence-Alpes-Cote d'Azur;Villar-d'Arene
+1547;;6.38445;44.99619;2071.00;;;ecrins;Provence-Alpes-Cote d'Azur;Villar-d'Arene
+1710;;6.32856;44.98592;2829.00;;;ecrins;Provence-Alpes-Cote d'Azur;Villar-d'Arene
+1166;;6.14658;44.84464;1969.00;;;ecrins;Provence-Alpes-Cote d'Azur;Villar-d'Arene
+1753;;6.29962;44.97573;2225.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+1000;;6.51983;44.7814;1725.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;L'Argentière-la-Bessée
+2166;;6.293430;44.932474;1734.00;;;ecrins;Auvergne-Rhone-Alpes;Isere;Saint-Christophe-en-Oisans
+4223;;6.1957;44.3657;1477.00;;;ecrins;Provence-Alpes-Cote d'Azur;Hautes-Alpes;Les Gourniers
