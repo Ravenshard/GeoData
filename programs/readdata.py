@@ -90,9 +90,10 @@ def lireFile(file):
     headers = None
     deli = input("please enter the type of delimiter being used:\n>")
     name = input("Please enter the name where this data comes from:\n>")
-    with open(file, 'r') as fileContent:
+    with open(file, "r") as fileContent:
         fileContent = csv.reader(fileContent, delimiter=deli)
         headers = next(fileContent)
+        print(headers)
         data = collections.namedtuple(name, headers)
         for row in fileContent:  dataList.append(data(*row))
     return (dataList, name, headers)
