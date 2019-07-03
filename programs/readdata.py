@@ -93,7 +93,6 @@ def lireFile(file):
     with open(file, "r") as fileContent:
         fileContent = csv.reader(fileContent, delimiter=deli)
         headers = next(fileContent)
-        print(headers)
         data = collections.namedtuple(name, headers)
         for row in fileContent:  dataList.append(data(*row))
     return (dataList, name, headers)
