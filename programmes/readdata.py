@@ -1,10 +1,17 @@
 '''
-    Cr
+    HOW TO ADD IMAGES TO DATABASE:
+    run program as follows:
+        python .\programmes\readdata.py -apf .\photos
+    It will take some time, but it should say 'Photos added successfully'
+    after some time.  After you can hit 'q' to quit, and all is good.
+
 '''
 
 import os, re, sys, time, unicodedata, math, csv, collections, locale
 import psycopg2
 from PIL import Image
+
+user = "Jay"
 
 def getConnection():
     ''' Connect to the database and return connection and cursor
@@ -15,7 +22,8 @@ def getConnection():
         connection:     connection to the database
         cursor:         cursor to be used with the database
     '''
-    connect_str = "dbname='ecrains' user='Jay' host='localhost' " + \
+    global user
+    connect_str = "dbname='ecrains' user='{}' host='localhost' ".format(user) + \
                   "password='inriaTravail19'"
     conn = psycopg2.connect(connect_str)
     cursor = conn.cursor()
@@ -30,8 +38,9 @@ def getSecureConnection():
         connection:     connection to the database
         cursor:         cursor to be used with the database
     '''
+    global user
     pw = input("please enter password:\n> ")
-    connect_str = "dbname='ecrains' user='Jay' host='localhost' " + \
+    connect_str = "dbname='ecrains' user='{}' host='localhost' ".format(user) + \
                   "password='{}'".format(pw)
     conn = psycopg2.connect(connect_str)
     cursor = conn.cursor()
