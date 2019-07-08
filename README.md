@@ -23,3 +23,7 @@ Planification:
 Programmes:
 - Tout le programmes qu'on utilser pour le projet.  Chaque programme a une
   explaination dans le dossier.  
+
+Vieux Données:
+- Vieux Données est tout les vieux données, les donnèes qu'on avait au début.
+  Beaucoup d'autres donnèes sont à l'origine ici où l'internet.
