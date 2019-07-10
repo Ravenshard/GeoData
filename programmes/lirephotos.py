@@ -14,7 +14,7 @@
 import sys, psycopg2
 from PIL import Image
 
-user = "Jay"
+user = "postgres"
 dbname = "ecrains"
 
 def getConnection():
