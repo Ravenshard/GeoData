@@ -29,18 +29,18 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
-DROP DATABASE test;
+-- IL FAUT QU'ON CHANGE LE NOM DE BASE DE DONNÉES ICI
+DROP DATABASE IF EXISTS test;
 --
 -- TOC entry 4311 (class 1262 OID 28176)
 -- Name: test; Type: DATABASE; Schema: -; Owner: postgres
 --
-
+-- IL FAUT QU'ON CHANGE LE NOM DE BASE DE DONNÉES ICI
 CREATE DATABASE test WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_Canada.utf8' LC_CTYPE = 'English_Canada.utf8';
 
-
+-- IL FAUT QU'ON CHANGE LE NOM DE BASE DE DONNÉES ICI
 ALTER DATABASE test OWNER TO postgres;
-
+-- IL FAUT QU'ON CHANGE LE NOM DE BASE DE DONNÉES ICI
 \connect test
 
 SET statement_timeout = 0;

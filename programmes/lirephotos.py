@@ -11,27 +11,13 @@
 
 '''
 
-import sys, psycopg2
+import sys, psycopg2, os
 from PIL import Image
 
+'''IL FAUT QU'ON CHANGE LE NOM DE dbname '''
 user = "postgres"
-dbname = "ecrains"
-
-def getConnection():
-    ''' Se connecter à la base de données et revenir le "connection" et le "cursor"
-    Paramètres:
-        Null
-
-    Résultats:
-        connection:     connection à la base de données
-        cursor:         cursor utiliser avec la base de données
-    '''
-    global user, dbname
-    connect_str = "dbname='{}' user='{}' host='localhost' ".format(dbname, user) + \
-                  "password='inriaTravail19'"
-    conn = psycopg2.connect(connect_str)
-    cursor = conn.cursor()
-    return (conn, cursor)
+dbname = "test"
+pw = None
 
 def getSecureConnection():
     ''' Se connecter à la base de données et revenir le "connection" et le "cursor"
@@ -42,12 +28,17 @@ def getSecureConnection():
         connection:     connection à la base de données
         cursor:         cursor utiliser avec la base de données
     '''
-    global user, dbname
-    pw = input("saisez le mot de passe:\n> ")
+    global user, dbname, pw
+    ooun = 'o'
+    if pw == None:
+        pw = input("saisez le mot de passe:\n> ")
+        ooun = input("sauver le mot de pass? o/n\n> ")
     connect_str = "dbname='{}' user='{}' host='localhost' ".format(dbname, user) + \
                   "password='{}'".format(pw)
     conn = psycopg2.connect(connect_str)
     cursor = conn.cursor()
+    if not ooun == "o":
+        pw = None
     return (conn, cursor)
 
 def closeConnection(conn, cursor):
@@ -102,7 +93,7 @@ def addPhotoFile(file):
     finally:
         dbObj.commit()
         closeConnection(dbObj, cursorObj)
-        print("Des photos ont adjouté avec succès")
+        print("Des photos ont été adjoutées avec succès")
     return
 
 def queryPhoto(dbObj, cursorObj):
@@ -139,7 +130,7 @@ def selectPhotos():
         Null
     '''
     try:
-        dbObj, cursorObj = getConnection()
+        dbObj, cursorObj = getSecureConnection()
         queryPhoto(dbObj, cursorObj)
         tables = cursorObj.fetchall()
         pause = input("Vous voudrais faire une pause après chaque photo?  o/n\n> ")
