@@ -2,6 +2,18 @@
 -- PostgreSQL database dump
 --
 
+
+-- Il faut qu'on utilse ce dossier pour créer la base de données
+-- voici les instructions:
+-- En utilisant le "command line":
+--  psql -U postgres -f GeoData\programmes\dbschema.sql
+--  il faut qu'on change le "cd (current directory)" trouver le dossier psql.exe
+--  Pour moi (John), c'est comme ceci:
+--  c:\Program Files\PostgreSQL\11\bin> psql -U postgres -f d:\UoA\Grenoble\INRIA\data\GeoData\programmes\dbschema.sql
+--  Puis, il est necessaire qu'on mette le mot de passe de postgres,
+--  C'est le même mot de passe qu'on utilise pour installer postgreSQL
+
+
 -- Dumped from database version 11.4
 -- Dumped by pg_dump version 11.4
 
